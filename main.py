@@ -81,7 +81,7 @@ def search_tenders(
         f"""SELECT id, source_portal, source_url, published_date, closing_date,
                    opening_date, title, organisation, tender_value, detail_url, scraped_at
             FROM tenders {where}
-            ORDER BY scraped_at DESC
+            ORDER BY published_at DESC NULLS LAST
             LIMIT %s OFFSET %s""",
         params + [limit, offset],
     )
